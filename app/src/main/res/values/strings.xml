@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">PWD O2</string>
+    <string name="oxygen_requirement_and_area">Oxygen Requirement &amp; Area</string>
+    <string name="area_stp_requirement">Area STP Requirement</string>
+    <string name="settings">Settings</string>
+    <string name="settings_menu">Settings Menu</string>
+    <string name="back_button">Back Button</string>
+    <string name="edit">Edit</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="diffuser_twelve_inch">Diffuser 12\"</string>
+    <string name="diffuser_nine_inch">Diffuser 9\"</string>
+    <string name="area_diffuser_twelve_inch">Area Bak Aeration dengan diffuser 12\"</string>
+    <string name="volume_diffuser_twelve_inch">Volume Bak Aeration dengan diffuser 12\"</string>
+</resources>
