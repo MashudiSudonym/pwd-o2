@@ -43,14 +43,14 @@ class OxygenRequirementAndAreaViewModel @Inject constructor(
         _oxygenRequirementAndAreaUIState.asStateFlow()
 
     init {
-        autoLogoutByCountDown(3600)
+        3600.autoLogoutByCountDown()
         checkAuthentication()
         getStandardValue()
     }
 
-    private fun autoLogoutByCountDown(start: Int) {
+    private fun Int.autoLogoutByCountDown() {
         viewModelScope.launch {
-            (start - 1 downTo 0).asFlow().onEach { delay(1000L) }.conflate()
+            (this@autoLogoutByCountDown - 1 downTo 0).asFlow().onEach { delay(1000L) }.conflate()
                 .collect { remainingSecond ->
                     val hours = remainingSecond.div(3600)
                     val minutes = (remainingSecond.mod(3600)).div(60)
