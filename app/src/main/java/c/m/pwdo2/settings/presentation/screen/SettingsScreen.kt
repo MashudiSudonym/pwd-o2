@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import c.m.pwdo2.R
 import c.m.pwdo2.common.presentation.component.custom.TextFieldTypeUniversal
 import c.m.pwdo2.common.presentation.component.util.AdaptiveThemeColor
@@ -48,8 +49,8 @@ fun SettingsScreen(
     settingsViewModel: SettingsViewModel = hiltViewModel(),
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
-    val scope = rememberCoroutineScope()
-    val settingsUIState by settingsViewModel.settingsUIState.collectAsState()
+    val scopeSettingScreen = rememberCoroutineScope()
+    val settingsUIState by settingsViewModel.settingsUIState.collectAsStateWithLifecycle()
     val settingsUIEvent = settingsViewModel.settingsUIEvent
 
     Scaffold(
@@ -70,7 +71,7 @@ fun SettingsScreen(
             )
         }
     ) { _ ->
-        scope.launch {
+        scopeSettingScreen.launch {
             settingsUIEvent.collect { event ->
                 when (event) {
                     SettingsUIEvent.SuccessSaved -> {
@@ -99,6 +100,7 @@ fun SettingsScreen(
                     settingsUIState.isLoading -> {
                         CircularProgressIndicator()
                     }
+
                     settingsUIState.isError -> {
                         Text(
                             text = "Something wrong, restart application",
@@ -107,6 +109,7 @@ fun SettingsScreen(
                             modifier = Modifier.fillMaxWidth(),
                         )
                     }
+
                     settingsUIState.isSuccess -> {
                         Text(
                             text = "Nilai Standar Syarat DLH ",

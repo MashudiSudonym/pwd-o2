@@ -18,6 +18,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import c.m.pwdo2.R
 import c.m.pwdo2.common.presentation.component.custom.MainTopBarApp
 import c.m.pwdo2.common.presentation.component.util.BottomNavigationContentWrapperCustom
@@ -45,7 +46,7 @@ fun OxygenRequirementAndAreaScreen(
     navigator: DestinationsNavigator,
     oxygenRequirementAndAreaViewModel: OxygenRequirementAndAreaViewModel = hiltViewModel(),
 ) {
-    val oxygenRequirementAndAreaUIState by oxygenRequirementAndAreaViewModel.oxygenRequirementAndAreaUIState.collectAsState()
+    val oxygenRequirementAndAreaUIState by oxygenRequirementAndAreaViewModel.oxygenRequirementAndAreaUIState.collectAsStateWithLifecycle()
 
     DisposableEffect(lifecycleOwner) {
         val observable = LifecycleEventObserver { _, event ->

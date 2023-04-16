@@ -35,6 +35,7 @@ fun WrapperScreen(wrapperViewModel: WrapperViewModel = hiltViewModel()) {
     val currentRoute = navBackStackEntry?.destination?.route
     val wrapperUIState by wrapperViewModel.wrapperUIState.collectAsState()
 
+    // Check user login status
     when {
         wrapperUIState.isLoading -> {
             Column(

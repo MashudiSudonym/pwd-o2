@@ -18,6 +18,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import c.m.pwdo2.NavGraphs
 import c.m.pwdo2.R
 import c.m.pwdo2.area_stp_requirement.presentation.component.*
@@ -47,7 +48,7 @@ fun AreaStpRequirementScreen(
     navigator: DestinationsNavigator,
     areaStpRequirementViewModel: AreaStpRequirementViewModel = hiltViewModel(),
 ) {
-    val areaStpRequirementUIState by areaStpRequirementViewModel.areaStpRequirementUIState.collectAsState()
+    val areaStpRequirementUIState by areaStpRequirementViewModel.areaStpRequirementUIState.collectAsStateWithLifecycle()
 
     DisposableEffect(lifecycleOwner) {
         val observable = LifecycleEventObserver { _, event ->
@@ -107,8 +108,7 @@ fun AreaStpRequirementScreen(
 
                             AnimatedVisibility(visible = areaStpRequirementUIState.isExpanded) {
                                 AnaerobicRoomRequirementsCard(
-                                    modifier = Modifier
-                                        .fillMaxWidth(),
+                                    modifier = Modifier.fillMaxWidth(),
                                     areaStpRequirementUIState,
                                     areaStpRequirementViewModel,
                                 )
@@ -118,8 +118,7 @@ fun AreaStpRequirementScreen(
 
                             AnimatedVisibility(visible = areaStpRequirementUIState.isExpanded) {
                                 GreaseTrapRoomRequirementsCard(
-                                    modifier = Modifier
-                                        .fillMaxWidth(),
+                                    modifier = Modifier.fillMaxWidth(),
                                     areaStpRequirementUIState,
                                     areaStpRequirementViewModel,
                                 )
@@ -128,8 +127,7 @@ fun AreaStpRequirementScreen(
 
                             AnimatedVisibility(visible = areaStpRequirementUIState.isExpanded) {
                                 AerobRoomRequirementsCard(
-                                    modifier = Modifier
-                                        .fillMaxWidth(),
+                                    modifier = Modifier.fillMaxWidth(),
                                     areaStpRequirementUIState,
                                     areaStpRequirementViewModel,
                                 )
@@ -138,8 +136,7 @@ fun AreaStpRequirementScreen(
 
                             AnimatedVisibility(visible = areaStpRequirementUIState.isExpanded) {
                                 SedimentationRoomRequirementsCard(
-                                    modifier = Modifier
-                                        .fillMaxWidth(),
+                                    modifier = Modifier.fillMaxWidth(),
                                     areaStpRequirementUIState,
                                     areaStpRequirementViewModel,
                                 )
@@ -148,8 +145,7 @@ fun AreaStpRequirementScreen(
 
                             AnimatedVisibility(visible = areaStpRequirementUIState.isExpanded) {
                                 ChlorinationRoomRequirementsCard(
-                                    modifier = Modifier
-                                        .fillMaxWidth(),
+                                    modifier = Modifier.fillMaxWidth(),
                                     areaStpRequirementUIState,
                                     areaStpRequirementViewModel,
                                 )
@@ -158,8 +154,7 @@ fun AreaStpRequirementScreen(
 
                             AnimatedVisibility(visible = areaStpRequirementUIState.isExpanded) {
                                 FiltrationTankRoomRequirementsCard(
-                                    modifier = Modifier
-                                        .fillMaxWidth(),
+                                    modifier = Modifier.fillMaxWidth(),
                                     areaStpRequirementUIState,
                                     areaStpRequirementViewModel,
                                 )
@@ -168,8 +163,7 @@ fun AreaStpRequirementScreen(
 
                             AnimatedVisibility(visible = areaStpRequirementUIState.isExpanded) {
                                 RecycleTankRoomRequirementsCard(
-                                    modifier = Modifier
-                                        .fillMaxWidth(),
+                                    modifier = Modifier.fillMaxWidth(),
                                     areaStpRequirementUIState,
                                     areaStpRequirementViewModel,
                                 )
@@ -184,7 +178,8 @@ fun AreaStpRequirementScreen(
 }
 
 @Preview(
-    showBackground = true, name = "enable text field",
+    showBackground = true,
+    name = "enable text field",
     uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL
 )
 @Composable

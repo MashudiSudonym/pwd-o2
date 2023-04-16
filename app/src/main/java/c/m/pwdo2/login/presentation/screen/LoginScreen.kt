@@ -20,6 +20,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import c.m.pwdo2.R
 import c.m.pwdo2.common.presentation.component.custom.TextFieldTypePassword
 import c.m.pwdo2.common.presentation.component.custom.TextFieldTypeUniversal
@@ -44,7 +45,7 @@ fun LoginScreen(
     navigator: DestinationsNavigator,
     loginViewModel: LoginViewModel = hiltViewModel(),
 ) {
-    val loginUIState by loginViewModel.loginUIState.collectAsState()
+    val loginUIState by loginViewModel.loginUIState.collectAsStateWithLifecycle()
 
     Scaffold {
         when {
